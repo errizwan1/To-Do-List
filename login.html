@@ -1,7 +1,15 @@
+<html>
+<body>
+    
+
+</body>
+
 <?php
-include 'connection.php';
+include 'connection.html';
 
 ?>
+</html>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,9 +91,9 @@ include 'connection.php';
 
 <div class="header1">
         <h1>Daily Task Manager</h1>
-        <a href="registration.php" class="btn btn-primary login-button"><button>Register</button></a>
-        <a href="homepage.php" class="btn btn-secondary register-button"><button>Home</button></a>
-        <a href="about.php" class="btn btn-secondary register-button"><button>About</button></a>
+        <a href="registration.html" class="btn btn-primary login-button"><button>Register</button></a>
+        <a href="homepage.html" class="btn btn-secondary register-button"><button>Home</button></a>
+        <a href="about.html" class="btn btn-secondary register-button"><button>About</button></a>
 
     </div>
 
@@ -110,7 +118,6 @@ include 'connection.php';
     
 </body>
 
-</html>
 
 <?php
 if(isset($_POST['sbt'])){
@@ -150,9 +157,11 @@ if(isset($_POST['sbt'])){
             
 
             // header(
-            //     'location: login.php?msg=incorrect'
+            //     'location: login.html=incorrect'
             // );
         }
     }
 }
 ?>
+
+</html>

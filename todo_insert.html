@@ -1,5 +1,5 @@
 <?php
-include 'todo_connection.php';
+include 'todo_connection.html';
 ?>
 
 <!DOCTYPE html>
@@ -92,12 +92,12 @@ include 'todo_connection.php';
             <button type="submit" class="btn btn-success btn-block" name="sbt">Add Task</button><br>
         </form>
         <br>
-        <a href="todo_view.php"><button class="btn btn-primary btn-block">View Tasks</button></a>
+        <a href="todo_view.html"><button class="btn btn-primary btn-block">View Tasks</button></a>
     </div>
 
 </body>
 
-</html>
+
 
 <?php
 if(isset($_POST['sbt'])){
@@ -114,10 +114,11 @@ if(isset($_POST['sbt'])){
 
     if(isset($result)){
         header(
-            'location: todo_view.php'
+            'location: todo_view.html'
         );
     }
 
   
 }
 ?>
+</html>
