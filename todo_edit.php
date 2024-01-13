@@ -1,0 +1,136 @@
+<?php
+include 'todo_connection.php';
+
+$id= $_REQUEST['id'];
+
+session_start();
+
+$table=$_SESSION['username'];
+
+$query= "select * from $table where id='$id';";
+
+$result= mysqli_query($connection, $query);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Update Task</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: silver;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #edf5ff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #2d6b8c;
+            color: #f5f4eb;
+            padding: 10px;
+            text-align: center;
+            margin: -30px -30px 30px -30px; /* Add negative margins to extend to the edges */
+            border-radius: 10px 10px 0 0;
+            
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-family: serif;
+        }
+
+        input[type="text"],
+        input[type="datetime-local"] {
+            width: 100%;
+            margin-bottom: 5px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+        <h2><u>Edit Your Tasks</u></h2>
+    </div>
+        <br>
+        <form action="" method="post">
+            <?php while($fetch= mysqli_fetch_assoc($result)) { ?>
+                <label for="task">Task:</label>
+                <input type="text" class="form-control" id="task" name="task" value="<?php echo $fetch['task']; ?>"><br>
+                <label for="desc">Description:</label>
+                <input type="text" class="form-control" id="desc" name="desc" value="<?php echo $fetch['description']; ?>"><br>
+                <label for="time">Time:</label>
+                <input type="datetime-local" id="time" class="form-control" name="time" value="<?php echo $fetch['time']; ?>"><br>
+                <input type="submit" class="btn btn-primary btn-block" value="Update Task" name="upd"><br>
+            <?php } ?>
+        </form>
+        <br>
+        <a href="todo_view.php"><button class="btn btn-success btn-block">Back to View</button></a>
+    </div>
+
+</body>
+
+</html>
+
+<?php
+if(isset($_POST['upd'])){
+$task=$_REQUEST['task'];
+$desc=$_REQUEST['desc'];
+$time=$_REQUEST['time'];
+
+$que="update $table set task='$task', description='$desc', time='$time' where id='$id';";
+$res= mysqli_query($connection, $que);
+
+if(isset($res)){
+    header(
+        'location: todo_view.php'
+    );
+}
+}
+
+
+?>

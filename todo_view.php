@@ -1,0 +1,132 @@
+<?php
+include 'todo_connection.php';
+session_start();
+$table= $_SESSION['username'];
+$name= $_SESSION['name'];
+
+$query= "select * from $table order by time;";
+
+$result= mysqli_query($connection, $query);
+?>
+
+
+    
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            background-color: silver;
+            padding: 20px;
+
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #edf5ff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .header{
+            background-color: #6f578a;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin: -30px -30px 30px -30px; /* Add negative margins to extend to the edges */
+            border-radius: 10px 10px 0 0;
+            height:100px ;
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Serif;
+        }
+
+        .logout-btn {
+            margin-left: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+            
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+<a href="homepage.php" class="btn btn-secondary register-button"><button>Home</button></a>
+
+    <div class="container">
+        <div class="header">
+        <h3>Welcome, <?php echo $name; ?> </h3>
+        
+        
+        <h3>Your To-do List is Ready</h3>
+    </div>
+
+        <table border="1">
+            <tr>
+                <th>Task</th>
+                <th>Task Description</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+
+            <?php while($fetch = mysqli_fetch_assoc($result)) { ?>
+                <tr>
+                    <td><?php echo $fetch['task']; ?></td>
+                    <td><?php echo $fetch['description']; ?></td>
+                    <td><?php echo $fetch['time']; ?></td>
+                    <td class="action-buttons">
+                        <a href="todo_delete.php?id=<?php echo $fetch['id']; ?>" class="btn btn-outline-danger" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                        <a href="todo_edit.php?id=<?php echo $fetch['id']; ?>" class="btn btn-outline-success">Edit</a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </table>
+
+        <a href="todo_insert.php" class="btn btn-primary btn-sm">Add Task</a> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="logout.php" class="btn btn-danger btn-sm">Log Out</a>
+    </div>
+
+</body>
+
+</html>
