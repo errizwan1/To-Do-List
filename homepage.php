@@ -81,7 +81,7 @@
         <p> Manage your tasks using the To-Do-List here..</p>
         <p>LogIn to continue !</p>
         <p>If new on our website, click 'Register' and continue.</p>
-        <p>If you are already a member, click 'Login' and continue.</p>
+        <p>If you are already a member, click 'Login' and continue and you can add task.</p>
         </div>
     </div>
     <div class="footer">
