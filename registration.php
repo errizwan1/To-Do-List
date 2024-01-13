@@ -87,7 +87,7 @@ include 'todo_connection.php';
 <div class="header1">
         <h1>Daily Task Manager</h1>
         <a href="login.php" class="btn btn-primary login-button"><button>Login</button></a>
-        <a href="homepage.php" class="btn btn-secondary register-button"><button>Home</button></a>
+        <a href="index.html" class="btn btn-secondary register-button"><button>Home</button></a>
         <a href="about.php" class="btn btn-secondary register-button"><button>About</button></a>
 
     </div>
