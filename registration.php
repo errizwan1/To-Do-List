@@ -9,8 +9,8 @@
     
 </body>
 <?php
-include 'connection.html';
-include 'todo_connection.html';
+include 'connection.php';
+include 'todo_connection.php';
 
 ?>
 </html>
@@ -97,9 +97,9 @@ include 'todo_connection.html';
 
 <div class="header1">
         <h1>Daily Task Manager</h1>
-        <a href="login.html" class="btn btn-primary login-button"><button>Login</button></a>
-        <a href="index.html" class="btn btn-secondary register-button"><button>Home</button></a>
-        <a href="about.html" class="btn btn-secondary register-button"><button>About</button></a>
+        <a href="login.php" class="btn btn-primary login-button"><button>Login</button></a>
+        <a href="index.php" class="btn btn-secondary register-button"><button>Home</button></a>
+        <a href="about.php" class="btn btn-secondary register-button"><button>About</button></a>
 
     </div>
 
@@ -134,7 +134,7 @@ include 'todo_connection.html';
             </div>
             <button type="submit" class="btn btn-success btn-block" name="sbt">Sign Up</button>
         </form>
-        <p class="text-center mt-3">Already have an account? <a href="login.html">Log in</a></p>
+        <p class="text-center mt-3">Already have an account? <a href="login.php">Log in</a></p>
     </div>
 
 </body>

@@ -11,7 +11,7 @@
 </body>
 
 <?php
-include "todo_connection.html";
+include "todo_connection.php";
 $id= $_REQUEST['id'];
 
 session_start();
@@ -23,7 +23,7 @@ $res= mysqli_query($connection, $query);
 
 if($res){
     Header(
-        'location: todo_view.html'
+        'location: todo_view.php'
     );
 }
 ?>

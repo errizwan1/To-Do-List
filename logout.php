@@ -18,7 +18,7 @@ session_destroy();
 
 
 header(
-    'location: login.html'
+    'location: login.php'
 );
 
 ?>
