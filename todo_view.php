@@ -9,7 +9,7 @@
     
 </body>
 <?php
-include 'todo_connection.html';
+include 'todo_connection.php';
 session_start();
 $table= $_SESSION['username'];
 $name= $_SESSION['name'];
@@ -103,7 +103,7 @@ $result= mysqli_query($connection, $query);
 </head>
 
 <body>
-<a href="homepage.html" class="btn btn-secondary register-button"><button>Home</button></a>
+<a href="homepage.php" class="btn btn-secondary register-button"><button>Home</button></a>
 
     <div class="container">
         <div class="header">
@@ -127,16 +127,16 @@ $result= mysqli_query($connection, $query);
                     <td><?php echo $fetch['description']; ?></td>
                     <td><?php echo $fetch['time']; ?></td>
                     <td class="action-buttons">
-                        <a href="todo_delete.html?id=<?php echo $fetch['id']; ?>" class="btn btn-outline-danger" onclick="return confirm('Are you sure to delete ?')">Delete</a>
-                        <a href="todo_edit.html?id=<?php echo $fetch['id']; ?>" class="btn btn-outline-success">Edit</a>
+                        <a href="todo_delete.php?id=<?php echo $fetch['id']; ?>" class="btn btn-outline-danger" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                        <a href="todo_edit.php?id=<?php echo $fetch['id']; ?>" class="btn btn-outline-success">Edit</a>
                     </td>
                 </tr>
             <?php } ?>
         </table>
 
-        <a href="todo_insert.html" class="btn btn-primary btn-sm">Add Task</a> 
+        <a href="todo_insert.php" class="btn btn-primary btn-sm">Add Task</a> 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="logout.html" class="btn btn-danger btn-sm">Log Out</a>
+        <a href="logout.php" class="btn btn-danger btn-sm">Log Out</a>
     </div>
 
 </body>

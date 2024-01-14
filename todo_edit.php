@@ -1,5 +1,5 @@
 <?php
-include 'todo_connection.html';
+include 'todo_connection.php';
 
 $id= $_REQUEST['id'];
 
@@ -109,7 +109,7 @@ $result= mysqli_query($connection, $query);
             <?php } ?>
         </form>
         <br>
-        <a href="todo_view.html"><button class="btn btn-success btn-block">Back to View</button></a>
+        <a href="todo_view.php"><button class="btn btn-success btn-block">Back to View</button></a>
     </div>
 
 </body>
@@ -127,7 +127,7 @@ $res= mysqli_query($connection, $que);
 
 if(isset($res)){
     header(
-        'location: todo_view.html'
+        'location: todo_view.php'
     );
 }
 }
